@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Press — GTA-Style Cover Studio</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">VP</span>
+    <div>
+      <h1>Vice Press</h1>
+      <p>Turn any photo into GTA-style cover art. Offline, in your browser.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="undo" type="button" disabled>↩ Undo</button>
+    <button id="redo" type="button" disabled>↪ Redo</button>
+    <button id="surprise" type="button" class="accent">🎲 Surprise me</button>
+  </div>
+</header>
+
+<main class="app">
+  <aside class="controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <p class="hint">Your photos never leave this machine. Click a sample to fill the selected panel.</p>
+      <label class="upload-btn">＋ Add your photos
+        <input id="upload" type="file" accept="image/*" multiple hidden>
+      </label>
+      <div id="samples" class="samples"></div>
+      <p id="panel-label" class="hint"></p>
+      <label class="slider-row">Zoom panel
+        <input id="zoom" type="range" min="100" max="400" value="100">
+      </label>
+      <button id="shuffle" type="button">Shuffle photos</button>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="picker"></div>
+    </section>
+
+    <section>
+      <h2>3 · Grade</h2>
+      <div id="grades" class="picker"></div>
+    </section>
+
+    <section>
+      <h2>4 · Words</h2>
+      <label>Title
+        <input id="title" type="text" maxlength="32" value="Neon Shore">
+      </label>
+      <label>Subtitle
+        <input id="subtitle" type="text" maxlength="48" value="a vice city story">
+      </label>
+      <label>Badge
+        <input id="badge" type="text" maxlength="16" value="EST. 2026">
+      </label>
+      <div class="field-label">Heat meter</div>
+      <div id="stars" class="stars"></div>
+    </section>
+
+    <section>
+      <h2>5 · Finish</h2>
+      <label class="check"><input id="grain" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignette" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="frame" type="checkbox" checked> White frame</label>
+    </section>
+
+    <section>
+      <h2>6 · Export</h2>
+      <div id="sizes" class="picker"></div>
+      <button id="export" type="button" class="primary">Export PNG</button>
+      <button id="export-all" type="button">Export all 4 sizes</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <div class="canvas-wrap">
+      <canvas id="cover" width="1080" height="1350" aria-label="The cover, live preview"></canvas>
+      <div id="panel-outline" aria-hidden="true"></div>
+    </div>
+    <p class="stage-hint">Click a panel to select it · drag its photo to move it · scroll to zoom</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
